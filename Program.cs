@@ -1,4 +1,4 @@
-﻿//*******************************************************************************************
+//*******************************************************************************************
 // *Практическая работа №10                                                                  *
 //* Выполнил: Абдуллаев Э.С., группа 2-ИСПд                                                 *
 //* Задание:  массив = 10 найти кол-во и сумму элементов, значения которых кратны М         *
@@ -9,12 +9,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-
-static string slovo(string[] text)
-{
-    string[] text = {" ", " ", " ", " ", " ", " "};
-    return text 
-}
 namespace Pr_12
 {
     internal class Program
@@ -25,22 +19,27 @@ namespace Pr_12
             Console.Title = "Практическая работа №12";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Здравствуйте!");
-            Console.Write("Введите слова:");
-            slovo();
-            string world = Convert.ToString(Console.ReadLine());
+            Console.Write("Введите слова: ");
+            string[] word = Convert.ToString(Console.ReadLine()).Split(',');
             int count = 0;
             while (true)
             {
                 try
                 {
-                    if (world == " ")
+                    if (word.Length == 0)
                     {
-                        break;
+                       Console.WriteLine("Ошибка, слова не введено");
+                        continue;
                     }
-                    foreach (text in world)
+                    foreach (string text in word)
                     {
-                        count++;
+                        if ()
+                        {
+                            count++;
+                        }
                     }
+                    Console.WriteLine("Введите слово поиска: ");
+                    string search = Convert.ToString(Console.ReadLine());
                 }
                 catch (FormatException fEx)
                 {
@@ -63,11 +62,10 @@ namespace Pr_12
                     Console.ResetColor();
                     continue;
                 }
-                Console.WriteLine($"Слово: {world}");
+                Console.WriteLine($"Слово: {word}");
                 Console.WriteLine($"Встречается: {count}");
                 Console.ReadKey();
             }
         }
     }
 }
-
