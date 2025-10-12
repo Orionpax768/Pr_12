@@ -1,12 +1,11 @@
 //*******************************************************************************************
-// *Практическая работа №10                                                                  *
+//* Практическая работа №12                                                                 *
 //* Выполнил: Абдуллаев Э.С., группа 2-ИСПд                                                 *
-//* Задание:  массив = 10 найти кол-во и сумму элементов, значения которых кратны М         *
+//* Задание: Подсчёт количества вхождений слова в строке                                    *
 //*******************************************************************************************
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 namespace Pr_12
@@ -19,27 +18,33 @@ namespace Pr_12
             Console.Title = "Практическая работа №12";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Здравствуйте!");
-            Console.Write("Введите слова: ");
-            string[] word = Convert.ToString(Console.ReadLine()).Split(',');
-            int count = 0;
             while (true)
             {
                 try
                 {
-                    if (word.Length == 0)
+                    Console.Write("Введите строку со словами (через пробел): ");
+                    string input = Console.ReadLine();
+                    string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
+                    Console.Write("Введите слово для поиска: ");
+                    string searchWord = Console.ReadLine();
+                    int count = 0;
+                    foreach (string word in words)
                     {
-                       Console.WriteLine("Ошибка, слова не введено");
-                        continue;
-                    }
-                    foreach (string text in word)
-                    {
-                        if ()
+                        if (word.ToLower() == searchWord.ToLower())
                         {
                             count++;
                         }
                     }
-                    Console.WriteLine("Введите слово поиска: ");
-                    string search = Convert.ToString(Console.ReadLine());
+                    Console.WriteLine($"Начальная строка: {input}");
+                    Console.WriteLine($"Слово для поиска: {searchWord}");
+                    if (count == 0)
+                    {
+                        Console.WriteLine("Слово не найдено в строке");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Кол-во вхождений: {count}");
+                    }
                 }
                 catch (FormatException fEx)
                 {
@@ -62,9 +67,29 @@ namespace Pr_12
                     Console.ResetColor();
                     continue;
                 }
-                Console.WriteLine($"Слово: {word}");
-                Console.WriteLine($"Встречается: {count}");
-                Console.ReadKey();
+                Console.WriteLine("Выберите действие:");
+                Console.WriteLine("1 - Новый поиск");
+                Console.WriteLine("0 - Выйти из программы");
+                Console.Write("Ваш выбор: ");
+                string choice = Console.ReadLine();
+                switch (choice)
+                {
+                    case "1":
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("Новый поиск...");
+                        break;
+                    case "0":
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine("Программа завершена.");
+                        Console.ReadKey();
+                        return;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Неверный выбор! Программа будет продолжена.");
+                        Console.ReadKey();
+                        break;
+                }
             }
         }
     }
