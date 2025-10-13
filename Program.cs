@@ -30,12 +30,15 @@ namespace Pr_12
                     int count = 0;
                     foreach (string word in words)
                     {
+                        if (string.IsNullOrWhiteSpace(word))
+                        {
+                            throw new Exception("Ошибка: строка не может быть пустой!");
+                        }
                         if (word.ToLower() == searchWord.ToLower())
                         {
                             count++;
                         }
                     }
-                    Console.WriteLine($"Начальная строка: {input}");
                     Console.WriteLine($"Слово для поиска: {searchWord}");
                     if (count == 0)
                     {
@@ -67,16 +70,18 @@ namespace Pr_12
                     Console.ResetColor();
                     continue;
                 }
+                Console.BackgroundColor= ConsoleColor.Blue;
                 Console.WriteLine("Выберите действие:");
                 Console.WriteLine("1 - Новый поиск");
                 Console.WriteLine("0 - Выйти из программы");
                 Console.Write("Ваш выбор: ");
                 string choice = Console.ReadLine();
+                Console.ResetColor();
                 switch (choice)
                 {
                     case "1":
                         Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("Новый поиск...");
                         break;
                     case "0":
