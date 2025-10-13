@@ -8,10 +8,61 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace Pr_12
 {
     internal class Program
     {
+        static void ProcessWordSearch()
+        {
+            try
+            {
+                Console.Write("Введите строку со словами (через пробел): ");
+                string input = Console.ReadLine();
+                string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
+                Console.Write("Введите слово для поиска: ");
+                string searchWord = Console.ReadLine();
+                int count = 0;
+                foreach (string word in words)
+                {
+                    if (string.IsNullOrWhiteSpace(word))
+                    {
+                        throw new Exception("Ошибка: строка не может быть пустой!");
+                    }
+                    if (word.ToLower() == searchWord.ToLower())
+                    {
+                        count++;
+                    }
+                }
+                Console.WriteLine($"Слово для поиска: {searchWord}");
+                if (count == 0)
+                {
+                    Console.WriteLine("Слово не найдено в строке");
+                }
+                else
+                {
+                    Console.WriteLine($"Кол-во вхождений: {count}");
+                }
+            }
+            catch (FormatException fEx)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Ошибка:{fEx.Message}");
+                Console.ResetColor();
+            }
+            catch (OverflowException oEx)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Ошибка: {oEx.Message}");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Произошла ошибка: {ex.Message}");
+                Console.ResetColor();
+            }
+        }
         static void Main(string[] args)
         {
             Console.Clear();
@@ -20,57 +71,9 @@ namespace Pr_12
             Console.WriteLine("Здравствуйте!");
             while (true)
             {
-                try
-                {
-                    Console.Write("Введите строку со словами (через пробел): ");
-                    string input = Console.ReadLine();
-                    string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
-                    Console.Write("Введите слово для поиска: ");
-                    string searchWord = Console.ReadLine();
-                    int count = 0;
-                    foreach (string word in words)
-                    {
-                        if (string.IsNullOrWhiteSpace(word))
-                        {
-                            throw new Exception("Ошибка: строка не может быть пустой!");
-                        }
-                        if (word.ToLower() == searchWord.ToLower())
-                        {
-                            count++;
-                        }
-                    }
-                    Console.WriteLine($"Слово для поиска: {searchWord}");
-                    if (count == 0)
-                    {
-                        Console.WriteLine("Слово не найдено в строке");
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Кол-во вхождений: {count}");
-                    }
-                }
-                catch (FormatException fEx)
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Ошибка:{fEx.Message}");
-                    Console.ResetColor();
-                    continue;
-                }
-                catch (OverflowException oEx)
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Ошибка: {oEx.Message}");
-                    Console.ResetColor();
-                    continue;
-                }
-                catch (Exception ex)
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Произошла ошибка: {ex.Message}");
-                    Console.ResetColor();
-                    continue;
-                }
-                Console.BackgroundColor= ConsoleColor.Blue;
+                ProcessWordSearch();
+
+                Console.BackgroundColor = ConsoleColor.Blue;
                 Console.WriteLine("Выберите действие:");
                 Console.WriteLine("1 - Новый поиск");
                 Console.WriteLine("0 - Выйти из программы");
