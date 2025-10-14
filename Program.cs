@@ -17,6 +17,10 @@ namespace Pr_12
         {
             try
             {
+                Console.Clear();
+                Console.Title = "Практическая работа №12";
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Здравствуйте!");
                 Console.Write("Введите строку со словами (через пробел): ");
                 string input = Console.ReadLine();
                 string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
