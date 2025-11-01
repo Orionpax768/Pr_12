@@ -13,15 +13,10 @@ namespace Pr_12
 {
     internal class Program
     {
-        static void ProcessWordSearch()
+        static void ProcessWordSearch(string input, string[] words)
         {
             try
             {
-                Console.Clear();
-                Console.Title = "Практическая работа №12";
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("Здравствуйте!");
-                Console.Write("Введите строку со словами (через пробел): ");
                 string input = Console.ReadLine();
                 string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
                 Console.Write("Введите слово для поиска: ");
@@ -73,6 +68,7 @@ namespace Pr_12
             Console.Title = "Практическая работа №12";
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Здравствуйте!");
+            Console.Write("Введите строку со словами (через пробел): ");
             while (true)
             {
                 ProcessWordSearch();
