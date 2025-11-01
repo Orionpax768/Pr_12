@@ -17,8 +17,8 @@ namespace Pr_12
         {
             try
             {
-                string input = Console.ReadLine();
-                string[] words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
+                input = Console.ReadLine();
+                words = input.Split(new char[] { ' ', ',', '.', ';', ':', '!', '?' });
                 Console.Write("Введите слово для поиска: ");
                 string searchWord = Console.ReadLine();
                 int count = 0;
